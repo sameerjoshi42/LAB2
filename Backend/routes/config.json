@@ -1,0 +1,12 @@
+{
+  "DB": {
+    "host": "labdb.cg5vcvk6rjkp.us-east-2.rds.amazonaws.com",
+    "user": "admin",
+    "password": "qwertyui",
+    "database": "uber_schema",
+    "port": "3306",
+    "mongoDB":"mongodb+srv://root:root@cluster0.p7ceh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+  },
+  "secret": "mysql",
+  "frontEnd": "http://localhost:3000"
+}

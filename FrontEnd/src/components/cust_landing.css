@@ -1,0 +1,14 @@
+.cust_landing {
+  margin-top: 2px;
+}
+
+.cust_landing .radio__filter {
+  text-align: center;
+  padding-right: 110px;
+  padding-top: 35px;
+
+  margin-left: 150px;
+}
+.cust_landing .radio__filter .label {
+  margin-top: 200px;
+}
