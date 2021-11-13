@@ -19,6 +19,7 @@ import Order from './components/Order';
 import Restro_Order from './components/Restro_Order';
 import Restro_Customer_Profile from './components/Restro_Customer_Profile';
 import Restro_Dish from './components/Restro_Dish';
+import EditCustomer from './components/EditCustomer';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/restroorders" component={Restro_Order}></Route>
         <Route path="/restrocustprofile" component={Restro_Customer_Profile}></Route>
         <Route path="/restrodishes" component={Restro_Dish}></Route>
+        <Route path="/editcustomer" component={EditCustomer}></Route>
         
       </Switch>
       

@@ -17,7 +17,7 @@ var saveOrderDetails = require('./services/saveOrderDetails');
 var viewOrderDetailsById = require('./services/viewOrderDetailsById');
 var updateOrderStatus = require('./services/updateOrderStatus');
 var cancelOrder = require('./services/cancelOrder');
-
+var editCity = require('./services/editCity');
 
 const mongoose = require('mongoose');
 var mongoOptions={
@@ -84,3 +84,4 @@ handleTopicRequest("saveOrderDetails",saveOrderDetails)
 handleTopicRequest("viewOrderDetailsById",viewOrderDetailsById)
 handleTopicRequest("updateOrderStatus",updateOrderStatus)
 handleTopicRequest("cancelOrder",cancelOrder)
+handleTopicRequest("editCity",editCity)
