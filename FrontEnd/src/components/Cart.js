@@ -1,17 +1,23 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useHistory} from 'react-router-dom';
 import {Modal, ModalBody, ModalFooter} from 'react-bootstrap';
 // import "./Cart.css";
 import '../App.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import ModalHeader from 'react-bootstrap/esm/ModalHeader';
+import { useSelector,useDispatch } from 'react-redux';
+import { openModal } from '../Actions';
+import { closeModal } from '../Actions';
+import { addToCart } from '../Actions';
+import { removeFromCart } from '../Actions';
 
-
-const Cart = ({setOpenModal,modalOpen}) => {
-  
+const Cart = () => {
+    let history=useHistory();
+    const modalState = useSelector(state=>state.modalReducer);
     const dishArray=JSON.parse(sessionStorage.getItem('cart'));
-     
+    const dispatch = useDispatch();
     const[newDishArray,setNewDishArray]=useState(dishArray);
+    const cartItems = useSelector(state=>state.cartReducer)
     
 
 
@@ -48,7 +54,7 @@ const Cart = ({setOpenModal,modalOpen}) => {
        
     }
     var amount=0;
-    newDishArray.map((value)=>{
+    cartItems.map((value)=>{
       amount= amount+value.Dish_Price*value.quantity;
       
     })
@@ -56,7 +62,7 @@ const Cart = ({setOpenModal,modalOpen}) => {
     
     return (
         <div>
-            <Modal show={modalOpen} onHide={()=>{setOpenModal(false)}}>
+            <Modal show={modalState} onHide={()=>{dispatch(closeModal())}}>
                 <ModalHeader style={{textAlign:"center"}}>
                 <div style={{textAlign:"center"}} >
                     <h1>Your Cart</h1>
@@ -64,13 +70,18 @@ const Cart = ({setOpenModal,modalOpen}) => {
                 </ModalHeader>
                 <ModalBody>
                     
-                    {newDishArray.length===0 && <div> Cart is Empty </div>}
-                    {newDishArray.filter(val=>val.quantity>0).map((val,idx)=>{
+                    {cartItems.length===0 && <div> Cart is Empty </div>}
+                    {cartItems.filter(
+                        (dish)=>{
+                            if(dish.quantity > 0){
+                                return dish;
+                            }}
+                    ).map((val,idx)=>{
             return (
                 <div >
                     <h4>dish: <strong>{val.Dish_Name}</strong>   ||  qty: <strong>{val.quantity}</strong>   ||    price: <strong>{val.Dish_Price}</strong></h4>
-                    <button onClick={()=>additem(val)}>Add</button><br></br>
-                    <button onClick={()=>removeitem(val)}>Remove</button>
+                    <button onClick={()=>dispatch(addToCart(val))}>Add</button><br></br>
+                    <button onClick={()=>dispatch(removeFromCart(val))}>Remove</button>
                     
                 </div>
             );
@@ -84,9 +95,17 @@ const Cart = ({setOpenModal,modalOpen}) => {
                 </ModalBody>
                 <ModalFooter>
                     <div>
-                    <Link  to={{
+                    {/* <Link  to={{
                             pathname: "/checkout"
-                            }}><button>Go to checkout</button></Link>
+                            }}><button onClick={()=>{closeModal()
+                            
+                            }}>Go to checkout</button></Link> */}
+                            <button onClick={
+                                ()=>{
+                                    dispatch(closeModal());
+                                    history.push("/checkout")
+                                }
+                            }>Go to Checkout</button>
                     </div>
                 </ModalFooter>
 

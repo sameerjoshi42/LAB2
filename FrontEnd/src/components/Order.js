@@ -255,7 +255,7 @@ const Order = () => {
                     <Modal.Body>
                         <div>
                         {orderDetails.filter((value)=>{
-                            if(value.Order_Id==orderid){
+                            if(value.Quantity>0){
                             return value;
                 }
 

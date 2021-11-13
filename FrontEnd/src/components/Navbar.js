@@ -3,16 +3,17 @@ import React from 'react'
 import '../App.css';
 import {useState } from "react";
 import Cart from './Cart';
-import { Modal } from 'react-bootstrap';
-
+import { useSelector,useDispatch } from 'react-redux';
+import { openModal } from '../Actions';
+import { closeModal } from '../Actions';
 const Navbar = (props) => {
+
+    const modalState = useSelector(state=>state.modalReducer);
     const[search,setSearch] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
+    const dispatch = useDispatch();
     
     
-    
-    
-   
     return (
         <div>
         <div className="Navbar">
@@ -40,7 +41,7 @@ const Navbar = (props) => {
                     token="";
                     localStorage.setItem('token',token);
                 }}>Logout</a>
-                <button onClick={() => {setModalOpen(true);
+                <button onClick={() => {dispatch(openModal());
                  }}> Cart</button>
                 
 
@@ -54,7 +55,7 @@ const Navbar = (props) => {
             </div>
             
         </div>
-        {modalOpen && <Cart setOpenModal={setModalOpen} modalOpen={modalOpen} />}
+        {modalState && <Cart/>}
         </div>
         
     )

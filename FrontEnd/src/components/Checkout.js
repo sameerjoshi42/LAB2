@@ -2,7 +2,8 @@ import React from 'react'
 import Navbar from './Navbar';
 import {useEffect,useState} from "react";
 import Axios from 'axios'
-
+import { useSelector,useDispatch } from 'react-redux';
+import { emptyCart } from '../Actions';
 const Checkout = () => {
     const[address,setAddress]=useState("");
     const[allAddresses,setAllAddresses]=useState([]);
@@ -10,7 +11,9 @@ const Checkout = () => {
     const[success,setSuccess]=useState('');
     const[instructions,setInstructions]=useState('');
     // var orderInfo=props.location.newDishArray;
-    var orderInfo=JSON.parse(sessionStorage.getItem('cart'));
+    // var orderInfo=JSON.parse(sessionStorage.getItem('cart'));
+    const dispatch = useDispatch();
+    const orderInfo = useSelector(state=>state.cartReducer)
     useEffect(()=>{
         const url ="http://localhost:3002/getcustaddressesMongo";
         Axios.post(url,{id:sessionStorage.getItem('cust_id')
@@ -67,8 +70,9 @@ const Checkout = () => {
                     
                 }).then(()=>{
                     console.log('success');
-                    orderInfo=[]
-                    sessionStorage.setItem('cart',JSON.stringify(orderInfo));
+                    var newOrderInfo=[]
+                    //sessionStorage.setItem('cart',JSON.stringify(orderInfo));
+                    dispatch(emptyCart(newOrderInfo));
                 })
             })
         
@@ -80,7 +84,12 @@ const Checkout = () => {
             <Navbar/>
             <h3> Order Summary: </h3>
             <h4>------------------------------------------------------</h4>
-            {orderInfo.map((val,idx)=>{
+            {orderInfo.filter((dish)=>{
+                if(dish.quantity > 0){
+                    return dish;
+                }
+
+            }).map((val,idx)=>{
                 return(
                     <div>
                         

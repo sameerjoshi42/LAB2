@@ -3,13 +3,16 @@ import Navbar from './Navbar'
 import { useEffect, useState } from "react";
 import Axios from 'axios'
 import '../App.css';
-
+import { useSelector,useDispatch } from 'react-redux';
 import Cart from './Cart';
+import { addToCart } from '../Actions';
+import { removeFromCart } from '../Actions';
 
 
 const Cust_Restro_Landing = props => {
     
-    
+    const dispatch = useDispatch();
+    const cartItems = useSelector(state=>state.cartReducer)
     var restro_id=props.location.id;
     sessionStorage.setItem('restroId',restro_id);
     sessionStorage.setItem('restroName',props.location.name);
@@ -27,24 +30,24 @@ const Cust_Restro_Landing = props => {
         })
     },[])
 
-    const addToCart =(val)=>{
-        const exist = cart.find(dish=>dish.Dish_Name===val.Dish_Name)
-        if(exist){
-            const nextState = cart.map((item)=>item.Dish_Name===val.Dish_Name?{
-                ...exist,quantity:exist.quantity+1
-            }:item)
-            setCart(nextState);
+    // const addToCart =(val)=>{
+    //     const exist = cart.find(dish=>dish.Dish_Name===val.Dish_Name)
+    //     if(exist){
+    //         const nextState = cart.map((item)=>item.Dish_Name===val.Dish_Name?{
+    //             ...exist,quantity:exist.quantity+1
+    //         }:item)
+    //         setCart(nextState);
             
-        }
-        else{
-            const newArray=[...cart,{...val,quantity:1}];
-            setCart(newArray);
+    //     }
+    //     else{
+    //         const newArray=[...cart,{...val,quantity:1}];
+    //         setCart(newArray);
             
             
-        }      
+    //     }      
         
 
-    }
+    // }
     
     sessionStorage.setItem('cart',JSON.stringify(cart))
     
@@ -70,7 +73,7 @@ const Cust_Restro_Landing = props => {
                         
                         <h3><strong>Description : </strong><strong>{val.Description}</strong></h3>
 
-                        <button onClick={()=>addToCart(val)}>Add to cart</button> <br></br>
+                        <button onClick={()=>dispatch(addToCart(val))}>Add to cart</button> <br></br>
                         
                       
                         
