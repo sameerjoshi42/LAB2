@@ -12,7 +12,7 @@ import '../App.css'
 const Order = () => {
 
     var orderData=[];
-    const cust_name=sessionStorage.getItem('cust_name')
+    const cust_id=sessionStorage.getItem('cust_id')
     const[orderInfo,setOrderInfo]=useState([]);
     const [orderDetails,setOrderDetails]=useState([]);
     const[orderid,setOrderId] = useState(0);
@@ -30,7 +30,7 @@ const Order = () => {
   
     useEffect(()=>{
         const url ="http://localhost:3002/getOrderDetailsMongo";
-        Axios.post(url,{cust_name:cust_name
+        Axios.post(url,{id:cust_id
         },).then((response)=>{
             const orderData=response.data;
             const orderSlice = orderData.slice(offset,offset+ordersPerPage);
