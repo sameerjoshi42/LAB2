@@ -12,7 +12,7 @@ const Signup = () => {
       const [imageName, setImageName] = useState([]);
     
       const[success,setSuccess]=useState("");
-    const url="http://localhost:3002/custsignupmongo";
+    const url="http://3.128.29.95:3002/custsignupmongo";
     const [data, setData] = useState({
         name:"",
         email:"",

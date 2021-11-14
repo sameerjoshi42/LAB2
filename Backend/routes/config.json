@@ -8,5 +8,5 @@
     "mongoDB":"mongodb+srv://root:root@cluster0.p7ceh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
   },
   "secret": "mysql",
-  "frontEnd": "http://localhost:3000"
+  "frontEnd": "http://3.128.29.95:3000"
 }

@@ -10,7 +10,7 @@ const Restro_Customer_Profile = (props) => {
     let cust_id=props.location.state;
     const[CustInfo,setCustInfo]=useState([])
     useEffect(()=>{
-        const url ="http://localhost:3002/getcustDetailsMongo";
+        const url ="http://3.128.29.95:3002/getcustDetailsMongo";
         Axios.post(url,{id:cust_id
         },).then((response)=>{
             setCustInfo(response.data);
