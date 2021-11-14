@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const custSignIn = require("../Models/CustomerSignupModel")
-const { auth } = require("../utils/passport");
+const { auth } = require("../Utils/passport");
 auth();
 
 //Route to handle Post Request Call

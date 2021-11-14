@@ -11,7 +11,7 @@ var kafka = require('../kafka/client');
 
 const {checkAuth} = require("../Utils/passport");
 const Login = require("./Login");
-const { auth } = require("../utils/passport");
+const { auth } = require("../Utils/passport");
 const {checkRestroAuth} = require("../Utils/Restro_passport");
 const { restroauth } = require("../utils/Restro_passport");
 auth();
