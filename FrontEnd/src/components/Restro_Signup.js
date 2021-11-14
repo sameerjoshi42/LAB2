@@ -6,7 +6,7 @@ const Restro_Signup = () => {
     const [image, setImage] = useState([]);
     const [imageName, setImageName] = useState([]);
     const[success,setSuccess]=useState("");
-    const url="http://3.128.29.95:3002/restrosignupmongo";
+    const url="http://18.222.207.218:3002/restrosignupmongo";
     const [data, setData] = useState({
         rest_name:"",
         rest_email:"",

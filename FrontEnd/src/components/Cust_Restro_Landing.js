@@ -23,7 +23,7 @@ const Cust_Restro_Landing = props => {
     );
    
     useEffect(()=>{
-        const url ="http://3.128.29.95:3002/getDishesByRestroMongo";
+        const url ="http://18.222.207.218:3002/getDishesByRestroMongo";
         Axios.post(url,{id:sessionStorage.getItem('restroId')
         },).then((response)=>{
             setRestroDishes(response.data);

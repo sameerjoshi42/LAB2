@@ -10,7 +10,7 @@ const Customer_Profile = () => {
     let cust_id=sessionStorage.getItem('cust_id');
     const[CustInfo,setCustInfo]=useState([])
     useEffect(()=>{
-        const url ="http://3.128.29.95:3002/getcustDetailsMongo";
+        const url ="http://18.222.207.218:3002/getcustDetailsMongo";
         Axios.defaults.headers.common['authorization'] = sessionStorage.getItem('token');
         Axios.post(url,{id:cust_id
         },).then((response)=>{

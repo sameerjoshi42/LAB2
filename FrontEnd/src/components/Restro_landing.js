@@ -13,7 +13,7 @@ const Restro_landing = props => {
     const[restroInfo,setRestroInfo]=useState([])
 
     useEffect(()=>{
-        const url ="http://3.128.29.95:3002/getRestroDetailsMongo";
+        const url ="http://18.222.207.218:3002/getRestroDetailsMongo";
         Axios.post(url,{id:sessionStorage.getItem('restaurant_id')
         },).then((response)=>{
             setRestroInfo(response.data);

@@ -12,7 +12,7 @@ const Favourites = () => {
     
         
         useEffect(()=>{
-            const url ="http://3.128.29.95:3002/getFavMongo";
+            const url ="http://18.222.207.218:3002/getFavMongo";
             Axios.post(url,{id:
                 sessionStorage.getItem('cust_id')
             }).then((response)=>{

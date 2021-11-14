@@ -29,7 +29,7 @@ const Order = () => {
     const[specialInstructions,setSpecialInstructions]=useState("");
   
     useEffect(()=>{
-        const url ="http://3.128.29.95:3002/getOrderDetailsMongo";
+        const url ="http://18.222.207.218:3002/getOrderDetailsMongo";
         Axios.post(url,{id:cust_id
         },).then((response)=>{
             const orderData=response.data;
@@ -46,7 +46,7 @@ const Order = () => {
         
         const viewDetails=(id,amount,instructions)=>{
             setOrderId(id);
-            const url ="http://3.128.29.95:3002/viewOrderDetailsByIdMongo";
+            const url ="http://18.222.207.218:3002/viewOrderDetailsByIdMongo";
             Axios.post(url,{order_Id:id
             },).then((response)=>{
                 setOrderDetails(response.data);
@@ -62,7 +62,7 @@ const Order = () => {
         }
 
         const cancelOrder=(id,status)=>{
-            const url ="http://3.128.29.95:3002/cancelOrder";
+            const url ="http://18.222.207.218:3002/cancelOrder";
             if(status=="Order Placed"){
                 Axios.post(url,{order_Id:id,
                     status:"Cancelled"

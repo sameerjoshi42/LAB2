@@ -9,7 +9,7 @@ const EditCustomer = (props) => {
     const handleEdit = (e)=>{
         e.preventDefault();
             
-            const url="http://3.128.29.95:3002/editCityMongo"
+            const url="http://18.222.207.218:3002/editCityMongo"
             Axios.post(url,{id:userId,
                 updatedCity:newCity
              },).then((response)=>{
