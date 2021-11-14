@@ -21,7 +21,7 @@ const Restro_Order = () => {
   
 
     useEffect(()=>{
-        const url ="http://18.222.207.218:3002/getRestroOrderDetailsMongo";
+        const url ="http://3.145.61.91:3002/getRestroOrderDetailsMongo";
         Axios.post(url,{restro_id:sessionStorage.getItem('restaurant_id')
         },).then((response)=>{
             setOrderInfo(response.data);
@@ -29,7 +29,7 @@ const Restro_Order = () => {
     },[])
     const viewDetails=(id,amount,instructions)=>{
         setOrderId(id);
-        const url ="http://18.222.207.218:3002/viewOrderDetailsByIdMongo";
+        const url ="http://3.145.61.91:3002/viewOrderDetailsByIdMongo";
         Axios.post(url,{order_Id:id
         },).then((response)=>{
             setOrderDetails(response.data);
@@ -45,7 +45,7 @@ const Restro_Order = () => {
     }
 
     const updateStatus=(dropdown,id)=>{
-        const url ="http://18.222.207.218:3002/updateOrderStatusMongo";
+        const url ="http://3.145.61.91:3002/updateOrderStatusMongo";
         Axios.post(url,{status:dropdown,
             order_id:id
         },).then(()=>{

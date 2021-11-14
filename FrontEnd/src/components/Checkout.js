@@ -15,7 +15,7 @@ const Checkout = () => {
     const dispatch = useDispatch();
     const orderInfo = useSelector(state=>state.cartReducer)
     useEffect(()=>{
-        const url ="http://18.222.207.218:3002/getcustaddressesMongo";
+        const url ="http://3.145.61.91:3002/getcustaddressesMongo";
         Axios.post(url,{id:sessionStorage.getItem('cust_id')
         },).then((response)=>{
              setAllAddresses(response.data);
@@ -26,7 +26,7 @@ const Checkout = () => {
         setAllAddresses([...allAddresses,{address}]);
         window.location.reload();
         
-            const url ="http://18.222.207.218:3002/addaddressMongo";
+            const url ="http://3.145.61.91:3002/addaddressMongo";
             Axios.post(url,{id:sessionStorage.getItem('cust_id'),address:address
             },).then(()=>{
                 console.log('success');
@@ -38,7 +38,7 @@ const Checkout = () => {
     const placeOrder = (e)=>{
         var data="";
         e.preventDefault();
-        const url ="http://18.222.207.218:3002/placeOrderMongo";
+        const url ="http://3.145.61.91:3002/placeOrderMongo";
         var dt = new Date();
         var year = dt.getFullYear();
         var month = dt.getMonth()+1;
@@ -64,7 +64,7 @@ const Checkout = () => {
             },).then(async(response)=>{
                 console.log(response.data);
                 data = await response.data;
-                Axios.post('http://18.222.207.218:3002/saveOrderDetailsMongo',{
+                Axios.post('http://3.145.61.91:3002/saveOrderDetailsMongo',{
                     order_id:data,
                     order_details:orderInfo
                     

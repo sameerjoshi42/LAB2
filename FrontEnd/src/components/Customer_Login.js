@@ -32,7 +32,7 @@ const Customer_Login = () => {
     const Login=(userEmail,e)=>{
         e.preventDefault();
         
-        const url="http://18.222.207.218:3002/login"
+        const url="http://3.145.61.91:3002/login"
         Axios.post(url,{email:userEmail,
             password:data.password
             },).then((response)=>{

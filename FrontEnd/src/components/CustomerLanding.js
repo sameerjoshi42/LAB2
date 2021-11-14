@@ -18,7 +18,7 @@ const CustomerLanding = () => {
     
     
     useEffect(()=>{
-        const url ="http://18.222.207.218:3002/getCustLocationMongo";
+        const url ="http://3.145.61.91:3002/getCustLocationMongo";
         // Axios.defaults.headers.common['authorization'] = localStorage.getItem('token');
         Axios.post(url,{id:sessionStorage.getItem('cust_id')
         },).then((response)=>{
@@ -28,7 +28,7 @@ const CustomerLanding = () => {
     },[])
     
     const addtoFav=(value)=>{
-        const url="http://18.222.207.218:3002/addtofavMongo";
+        const url="http://3.145.61.91:3002/addtofavMongo";
         Axios.defaults.headers.common['authorization'] = localStorage.getItem('token');
         Axios.post(url,{
             id:sessionStorage.getItem('cust_id'),
@@ -45,7 +45,7 @@ const CustomerLanding = () => {
     
     useEffect(()=>{
         Axios.defaults.headers.common['authorization'] = localStorage.getItem('token');
-        const url ="http://18.222.207.218:3002/getAllRestaurantsMongo";
+        const url ="http://3.145.61.91:3002/getAllRestaurantsMongo";
         Axios.get(url).then((response)=>{
             setRestroInfo(response.data);
         })

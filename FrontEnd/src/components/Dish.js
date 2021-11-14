@@ -33,7 +33,7 @@ const Dish = props => {
     
 
     }
-    const url="http://18.222.207.218:3002/addDishMongo";
+    const url="http://3.145.61.91:3002/addDishMongo";
     function submit(e){
         e.preventDefault();
         const DishInfos = new FormData();
