@@ -731,7 +731,7 @@ app.post('/addDishMongo',  upload.single("image"),(req, res) => {
 
 app.post('/getDishesByRestroMongo',(req, res) => {
 
-  kafka.make_request('getDishesByRestro',req.body, function(err,results){
+  kafka.make_request('getDishesByRestroId',req.body, function(err,results){
     console.log('in result');
     console.log(results);
     if (err){

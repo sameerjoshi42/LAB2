@@ -70,7 +70,7 @@ function handleTopicRequest(topic_name,fname){
 //first argument is topic name
 //second argument is a function that will handle this topic request
 // handleTopicRequest("addtofav",AddtoFav)
-handleTopicRequest("getDishesByRestro",getDishesByRestro)
+handleTopicRequest("getDishesByRestroId",getDishesByRestro)
 handleTopicRequest("getFav",getFav)
 handleTopicRequest("addAddress",addAddress)
 handleTopicRequest("getCustomerAddress",getAddress)
